@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif:
+    var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+}
+
+html {
+  /* Black all the way down, so the end of the scroll never flashes white. */
+  background-color: #000;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: var(--font-sans);
+}
+
+/* Fixed header clearance for anchor jumps. */
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
