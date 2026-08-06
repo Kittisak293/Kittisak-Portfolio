@@ -8,17 +8,16 @@ Built with Next.js 16 (App Router), TypeScript, Tailwind CSS v4, Lenis, and GSAP
 
 ---
 
-## ⚠️ Read this first — the frames are not in git
+## The frame sequence is committed
 
-`public/hero/frames/` is **gitignored**. A fresh clone has no images, and the hero will
-render as a black screen until you generate them.
-
-`final.mp4` **is** committed — it is the irreplaceable source. Run the command below to
-rebuild the frame sequence from it.
+`public/hero/frames/` (266 JPEGs, ~18 MB) is committed alongside `final.mp4`, the source
+video — deploy hosts like Netlify don't run ffmpeg during build, so the frames have to
+already be in the repo for the hero to render. If you change `final.mp4`, regenerate the
+frames with the command below and commit the result.
 
 ---
 
-## Generating the frame sequence
+## Regenerating the frame sequence
 
 Browsers cannot scrub a video file smoothly, so the video is turned into a numbered
 JPEG sequence drawn onto a canvas.
