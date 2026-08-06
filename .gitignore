@@ -53,3 +53,8 @@ Thumbs.db
 # python bytecode (claude skills ship python scripts)
 __pycache__/
 *.pyc
+
+# AI assistant config/instructions — local only, not for the public repo
+/.claude/
+/CLAUDE.md
+/AGENTS.md
