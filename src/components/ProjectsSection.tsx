@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Reveal from "@/components/Reveal";
 import ProjectRow from "@/components/ProjectRow";
-import { GITHUB_PROFILE_URL, PROJECTS } from "@/lib/projects-content";
+import { PROJECTS } from "@/lib/projects-content";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,14 +59,6 @@ export default function ProjectsSection() {
               Projects
             </span>
           </p>
-          <a
-            href={GITHUB_PROFILE_URL}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="mt-6 inline-block text-[0.8125rem] text-white/40 underline decoration-white/20 underline-offset-4 transition-colors hover:text-white/70"
-          >
-
-          </a>
         </Reveal>
 
         <div ref={contentRef} className="lg:col-span-9">
