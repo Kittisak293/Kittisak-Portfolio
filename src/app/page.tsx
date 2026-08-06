@@ -1,9 +1,9 @@
+import AboutSection from "@/components/AboutSection";
 import ScrollVideoHero from "@/components/ScrollVideoHero";
 import SiteNav from "@/components/SiteNav";
+import SkillsSection from "@/components/SkillsSection";
 
-const SECTIONS = [
-  { id: "about", title: "About Me" },
-  { id: "skills", title: "Skills" },
+const STUB_SECTIONS = [
   { id: "projects", title: "Projects" },
   { id: "contact", title: "Contact" },
 ];
@@ -14,8 +14,10 @@ export default function Home() {
       <SiteNav />
       <main id="top" className="bg-black">
         <ScrollVideoHero />
+        <AboutSection />
+        <SkillsSection />
 
-        {SECTIONS.map((section) => (
+        {STUB_SECTIONS.map((section) => (
           <section
             key={section.id}
             id={section.id}

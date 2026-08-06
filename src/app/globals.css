@@ -25,6 +25,19 @@ section[id] {
   scroll-margin-top: 6rem;
 }
 
+/*
+ * Starting state for <Reveal>. Scoped to no-preference so readers who ask for
+ * reduced motion are served the finished layout — nothing to fade, nothing to
+ * flash, and no JS needed to make that decision.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal],
+  [data-skill-row] {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}
+
 /* Lenis */
 html.lenis,
 html.lenis body {
