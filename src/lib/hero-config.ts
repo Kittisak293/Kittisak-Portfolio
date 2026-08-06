@@ -72,12 +72,12 @@ export const BEATS: Beat[] = [
   },
   {
     pill: "WHAT I DO",
-    lines: ["FULL STACK", { text: "DEVELOPMENT", indent: 1.2 }],
+    lines: ["FULL STACK", "DEVELOPMENT", ""],
     body: "Passionate about building end-to-end web applications. Always striving for clean, secure, and scalable solutions."
   },
   {
     pill: "OPEN FOR ROLES",
-    lines: ["SOFTWARE", { text: "ENGINEER", indent: 1.5 }],
+    lines: ["SOFTWARE", { text: "ENGINEER", indent: 1.5 }, ""],
     body: "Ready to step into a Software Engineer role to solve real-world problems, design reliable systems, and create real value for users and businesses.",
   }
 ];
