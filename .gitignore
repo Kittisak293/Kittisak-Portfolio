@@ -40,10 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# generated frame sequence — rebuild with the ffmpeg command in README.md.
-# final.mp4 is the irreplaceable source and IS committed.
-/public/hero/frames/
-
 # os / editor / logs
 .DS_Store
 Thumbs.db
