@@ -32,7 +32,8 @@ section[id] {
  */
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal],
-  [data-skill-row] {
+  [data-skill-row],
+  [data-project-row] {
     opacity: 0;
     transform: translateY(1.5rem);
   }

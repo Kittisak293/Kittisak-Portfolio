@@ -1,12 +1,10 @@
 import AboutSection from "@/components/AboutSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import ScrollVideoHero from "@/components/ScrollVideoHero";
 import SiteNav from "@/components/SiteNav";
 import SkillsSection from "@/components/SkillsSection";
 
-const STUB_SECTIONS = [
-  { id: "projects", title: "Projects" },
-  { id: "contact", title: "Contact" },
-];
+const STUB_SECTIONS = [{ id: "contact", title: "Contact" }];
 
 export default function Home() {
   return (
@@ -16,6 +14,7 @@ export default function Home() {
         <ScrollVideoHero />
         <AboutSection />
         <SkillsSection />
+        <ProjectsSection />
 
         {STUB_SECTIONS.map((section) => (
           <section
