@@ -49,3 +49,7 @@ next-env.d.ts
 Thumbs.db
 *.log
 .idea/
+
+# python bytecode (claude skills ship python scripts)
+__pycache__/
+*.pyc
