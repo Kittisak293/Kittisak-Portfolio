@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useRef, type RefObject } from "react";
-import { BEATS, DRUM } from "@/lib/hero-config";
+import {
+  BEATS,
+  DRUM,
+  HERO_TRACK_VH,
+  TEXT_HOLD_NOTCHES,
+  WHEEL_NOTCH_PX,
+} from "@/lib/hero-config";
 
 /**
  * Beats printed on the surface of a giant rotating drum. The drum position is
@@ -35,7 +41,18 @@ export default function HeroDrum({
     const tick = () => {
       raf = requestAnimationFrame(tick);
       const vh = window.innerHeight;
-      const drum = (progressRef.current ?? 0) * (BEATS.length - 1);
+
+      // Hold the drum still for the first few wheel notches, then roll through
+      // every beat across what is left, so the copy starts when the picture does.
+      const scrollablePx = vh * (HERO_TRACK_VH / 100 - 1);
+      const hold =
+        scrollablePx > 0
+          ? Math.min((TEXT_HOLD_NOTCHES * WHEEL_NOTCH_PX) / scrollablePx, 0.9)
+          : 0;
+      const raw = progressRef.current ?? 0;
+      const progress = Math.max(0, (raw - hold) / (1 - hold));
+
+      const drum = progress * (BEATS.length - 1);
 
       for (let i = 0; i < BEATS.length; i++) {
         const el = beatRefs.current[i];
@@ -66,13 +83,26 @@ export default function HeroDrum({
             </span>
 
             <h1 className="mt-6 text-5xl leading-[0.95] text-white md:text-6xl lg:text-7xl">
-              <span className="block font-semibold tracking-tight">
-                {beat.lines[0]}
-              </span>
-              <span className="block font-semibold tracking-tight">
-                {beat.lines[1]}
-              </span>
-              <span className="block font-serif italic">{beat.lines[2]}</span>
+              {beat.lines.map((raw, li) => {
+                const line = typeof raw === "string" ? { text: raw } : raw;
+                const isLast = li === beat.lines.length - 1;
+                const serif = line.serif ?? isLast;
+                return (
+                  <span
+                    key={li}
+                    className={
+                      serif
+                        ? "block font-serif italic"
+                        : "block font-semibold tracking-tight"
+                    }
+                    style={
+                      line.indent ? { paddingLeft: `${line.indent}em` } : undefined
+                    }
+                  >
+                    {line.text}
+                  </span>
+                );
+              })}
             </h1>
 
             <p className="mt-7 max-w-[28rem] text-base leading-relaxed text-white/70 md:text-lg">

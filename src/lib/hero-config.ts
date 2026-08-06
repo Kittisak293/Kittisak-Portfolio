@@ -20,34 +20,66 @@ export const SCRUB_EASE = 0.12;
 /** How hard the cursor tilt chases the pointer. Same idea, separate feel. */
 export const TILT_EASE = 0.08;
 
+/** Height of the hero scroll track, in vh. The sticky stage inside it is 100svh. */
+export const HERO_TRACK_VH = 600;
+
+/**
+ * The opening frames of the clip are nearly identical, so the picture reads as
+ * held for the first few wheel notches. The text drum is far more sensitive —
+ * a sliver of progress visibly rolls it. Without a matching hold, the copy
+ * moves while the picture still looks parked.
+ *
+ * So the drum stays put for this many wheel notches, then rolls through every
+ * beat across the remaining scroll. Raise it to hold the copy longer.
+ */
+export const TEXT_HOLD_NOTCHES = 4;
+
+/** Pixels a single mouse-wheel notch scrolls. Chrome's default is 100. */
+export const WHEEL_NOTCH_PX = 100;
+
 export const framePath = (index: number) =>
   `/hero/frames/frame_${String(index).padStart(4, "0")}.jpg`;
 
 export const FIRST_FRAME = framePath(1);
 
+/**
+ * One rendered headline line. A plain string covers the common case; the object
+ * form adds a hanging indent, or overrides which line gets the serif treatment.
+ */
+export type BeatLine =
+  | string
+  | {
+      text: string;
+      /** Indent from the left edge, in em of the headline's own font size. */
+      indent?: number;
+      /** Force italic serif on or off. Defaults to true for the last line only. */
+      serif?: boolean;
+    };
+
 export type Beat = {
+  /** One entry per rendered line. Any length — beats need not be the same shape. */
+  lines: BeatLine[];
   pill: string;
-  lines: [string, string, string];
   body: string;
 };
 
-/** The third line of every headline is the italic serif one. */
+/** The last line of every headline is the italic serif one. */
 export const BEATS: Beat[] = [
   {
-    pill: "PORTFOLIO 2026",
-    lines: ["Building things", "that work, and", "feel considered."],
-    body: "Fourth-year Computer Science student at Burapha University, shipping web products end to end.",
+    pill: "WHO I AM",
+    lines: ["KITTISAK", { text: "JANWANRAK", indent: 1.5 }],
+    body: "Fourth-year Computer Science student at Burapha University.",
   },
   {
-    pill: "WHAT I WORK WITH",
-    lines: ["TypeScript from", "the interface", "down to the API."],
-    body: "Vue.js and Quasar on the front, NestJS on the back — one language, one mental model, all the way through.",
+    pill: "WHAT I DO",
+    lines: ["FULL STACK", { text: "DEVELOPMENT", indent: 1.2 }],
+    body: "Passionate about building end-to-end web applications. Always striving for clean, secure, and scalable solutions."
   },
   {
-    pill: "OPEN TO WORK",
-    lines: ["Looking for a", "team worth", "building with."],
-    body: "Graduating soon and ready for real problems, real users, and people who care how it's made.",
-  },
+    pill: "OPEN FOR ROLES",
+    lines: ["SOFTWARE", { text: "ENGINEER", indent: 1.5 }],
+    body: "Ready to step into a Software Engineer role to solve real-world problems, design reliable systems, and create real value for users and businesses.",
+  }
 ];
 
 /** Drum geometry — beats live on the surface of a cylinder larger than the screen. */

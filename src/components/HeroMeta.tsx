@@ -6,13 +6,14 @@ export default function HeroMeta() {
   return (
     <div className="pointer-events-none absolute inset-y-0 right-0 z-20 hidden w-56 flex-col justify-between py-28 pr-10 text-right text-[0.625rem] tracking-[0.22em] text-white/50 uppercase lg:flex">
       <div className="space-y-1.5">
-        <p>Software Engineer</p>
-        <p>Burapha University</p>
+        <p>Final year</p>
+        <p>Computer Science</p>
+        {/* <p>Burapha University</p> */}
       </div>
 
       <div className="space-y-1.5">
-        <p>Currently — Final year, Computer Science</p>
-        <p>This week — Vue 3 + NestJS</p>
+        <p>Looking for internships</p>
+        <p>Software Engineer</p>
       </div>
 
       <div className="flex items-center justify-end gap-2">

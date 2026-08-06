@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   FIRST_FRAME,
   FRAME_COUNT,
+  HERO_TRACK_VH,
   SCRUB_EASE,
   TILT_EASE,
   framePath,
@@ -211,7 +212,11 @@ export default function ScrollVideoHero() {
   }
 
   return (
-    <div ref={trackRef} className="relative h-[600vh] w-full">
+    <div
+      ref={trackRef}
+      className="relative w-full"
+      style={{ height: `${HERO_TRACK_VH}vh` }}
+    >
       <div className="sticky top-0 h-svh w-full overflow-hidden bg-black">
         <div ref={tiltRef} className="absolute inset-0 [will-change:transform]">
           <canvas
