@@ -20,7 +20,7 @@ export default function AboutSection() {
               01
             </span>
             <span className="mt-1.5 block text-[0.625rem] tracking-[0.28em] text-white/50 uppercase">
-              About
+              About Me
             </span>
           </p>
         </Reveal>
